@@ -7,6 +7,7 @@
     body { font-family: Arial; text-align: center; padding: 2em; }
     input { width: 300px; padding: 10px; font-size: 16px; }
     .result { margin-top: 20px; font-size: 18px; }
+    img { margin-top: 20px; width: 150px; height: 150px; }
   </style>
 </head>
 <body>
@@ -17,15 +18,22 @@
   <div class="result" id="result"></div>
 
   <script>
-    // Liste des invités avec table et message
+    // Liste des invités avec table, message, et image de la table
     const guests = [
       { name: "Lionel Mikowsky", table: "Demande à Santorin", message: "Bienvenu le marié, profite de la soirée, tout va bien se passer !" },
       { name: "Willis Palermo", table: "Demande à Santorin", message: "Bienvenue la mariée, profite de la soirée, tout va bien se passer !" },
       { name: "Evelyne Mikowsky", table: "Niseko Powder", message: "C'est parti pour bien s'amuser ce soir" },
       { name: "Chris Palermo", table: "2", message: "Yes, Uncle Chris est au top ce soir!" },
-      { name: "Catherine Gambotto", table: "Machu Pichu", message: "Allez on va profiter de ce beau moment ce soir, profitez bien de la soirée !", image: "https://github.com/willisandlionel/tables/blob/images/Komodo.jpeg" },
-      { name: "Domenico Palermo", table: "Machu Pichu", message: "Andiamo a ballare !", image: "https://github.com/willisandlionel/tables/blob/images/Komodo.jpeg" },
+      { name: "Domenico Palermo", table: "Machu Pichu", message: "Andiamo a ballare !" },
     ];
+
+    // Associer une image à chaque table (définir à l'avance)
+    const tableImages = {
+      "Demande à Santorin": "https://via.placeholder.com/150/0000FF/FFFFFF?text=Demande+à+Santorin",  // Image de la table "Demande à Santorin"
+      "Niseko Powder": "https://via.placeholder.com/150/00FF00/FFFFFF?text=Niseko+Powder",        // Image de la table "Niseko Powder"
+      "2": "https://github.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",                         // Image de la table "2"
+      "Machu Pichu": "https://github.com/willisandlionel/tables/blob/main/images/MachuPicchu.jpeg",                         // Image de la table "Macchu Pichu"
+    };
 
     // Remplissage du datalist
     const nameList = document.getElementById("names");
@@ -42,7 +50,16 @@
 
       const result = document.getElementById("result");
       if (guest) {
-        result.innerHTML = `<strong>Table :</strong> ${guest.table}<br><strong>Message :</strong> ${guest.message}`;
+        // Afficher la table et le message
+        let resultHtml = `<strong>Table :</strong> ${guest.table}<br><strong>Message :</strong> ${guest.message}`;
+
+        // Afficher l'image de la table associée
+        const tableImage = tableImages[guest.table];
+        if (tableImage) {
+          resultHtml += `<br><img src="${tableImage}" alt="Image de la table ${guest.table}">`;
+        }
+
+        result.innerHTML = resultHtml;
       } else {
         result.innerHTML = "Nom non reconnu. Veuillez vérifier l'orthographe.";
       }
