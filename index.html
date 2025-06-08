@@ -20,20 +20,23 @@
   <script>
     // Liste des invités avec table, message, et image de la table
     const guests = [
-      { name: "Lionel Mikowsky", table: "Demande à Santorin", message: "Bienvenu le marié, profite de la soirée, tout va bien se passer !" },
-      { name: "Willis Palermo", table: "Demande à Santorin", message: "Bienvenue la mariée, profite de la soirée, tout va bien se passer !" },
+      { name: "Lionel Mikowsky", table: "Requins baleine à Nabire", message: "Bienvenu le marié, profite de la soirée, tout va bien se passer !" },
+      { name: "Willis Palermo", table: "Isle of Sye - Scotland", message: "Bienvenue la mariée, profite de la soirée, tout va bien se passer !" },
       { name: "Evelyne Mikowsky", table: "Niseko Powder", message: "C'est parti pour bien s'amuser ce soir" },
-      { name: "Chris Palermo", table: "2", message: "Yes, Uncle Chris est au top ce soir!" },
-      { name: "Catherine Gambotto", table: "Machu Picchu", message: "Super Catherine, profitons de ce moment" },
+      { name: "Chris Palermo", table: "Dragons de Komodo - Indonesia", message: "Yes, Uncle Chris est au top ce soir!" },
+      { name: "Catherine Gambotto", table: "Piton des neiges - La Réunion", message: "Super Catherine, profitons de ce moment" },
       { name: "Domenico Palermo", table: "Machu Picchu", message: "Andiamo a ballare !" },
     ];
 
     // Associer une image à chaque table (définir à l'avance)
     const tableImages = {
-      "Demande à Santorin": "https://via.placeholder.com/150/0000FF/FFFFFF?text=Demande+à+Santorin",  // Image de la table "Demande à Santorin"
-      "Niseko Powder": "https://via.placeholder.com/150/00FF00/FFFFFF?text=Niseko+Powder",        // Image de la table "Niseko Powder"
-      "2": "https://github.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",                         // Image de la table "2"
-      "Machu Picchu": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/MachuPicchu.jpeg",                         // Image de la table "Macchu Picchu"
+  "Requins baleine à Nabire": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",  // Image de la table "Requins baleine à Nabire"
+  "Machu Picchu": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/MachuPicchu.jpeg",  // Image de la table "Machu Picchu"
+  "Isle of Sye - Scotland": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Scotland.jpeg",  // Image de la table "Isle of Sye - Scotland"
+  "Piton des neiges - La Réunion": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Reunion.jpeg",  // Image de la table "Piton des neiges - La Réunion"
+  "Dragons de Komodo - Indonesia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Komodo.jpeg",  // Image de la table "Dragons de Komodo - Indonesia"
+  "Backside Montfort - Verbier": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/BacksideMontfortVerbier.jpg",  // Image de la table "Backside Montfort - Verbier"
+  "Heliski Chateau des dames - Cervinia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/HeliskiChateauDesDamesCervinia.jpg",  // Image de la table "Heliski Chateau des dames - Cervinia"
     };
 
     // Remplissage du datalist
