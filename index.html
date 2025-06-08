@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Placement des invités</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 2em; }
+    input { width: 300px; padding: 10px; font-size: 16px; }
+    .result { margin-top: 20px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <h1>Bienvenue à l'événement</h1>
+  <p>Entrez votre nom :</p>
+  <input type="text" id="nameInput" list="names" placeholder="Commencez à taper...">
+  <datalist id="names"></datalist>
+  <div class="result" id="result"></div>
+
+  <script>
+    // Liste des invités avec table et message
+    const guests = [
+      { name: "Alice Dupont", table: "5", message: "Bienvenue Alice, profitez bien de la soirée !" },
+      { name: "Bruno Martin", table: "3", message: "Heureux de vous revoir Bruno !" },
+      { name: "Chloé Bernard", table: "1", message: "Chloé, votre table est près de la scène." },
+      { name: "David Morel", table: "2", message: "Bon retour parmi nous, David." }
+    ];
+
+    // Remplissage du datalist
+    const nameList = document.getElementById("names");
+    guests.forEach(guest => {
+      const option = document.createElement("option");
+      option.value = guest.name;
+      nameList.appendChild(option);
+    });
+
+    // Affichage des infos quand le nom est entré
+    document.getElementById("nameInput").addEventListener("change", function() {
+      const name = this.value;
+      const guest = guests.find(g => g.name.toLowerCase() === name.toLowerCase());
+
+      const result = document.getElementById("result");
+      if (guest) {
+        result.innerHTML = `<strong>Table :</strong> ${guest.table}<br><strong>Message :</strong> ${guest.message}`;
+      } else {
+        result.innerHTML = "Nom non reconnu. Veuillez vérifier l'orthographe.";
+      }
+    });
+  </script>
+</body>
+</html>
