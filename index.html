@@ -19,6 +19,9 @@
   <div class="result" id="result"></div>
 
   <script>
+    // Message par défaut
+    const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
+
     // Liste des invités avec table, message, et image de la table
     const guests = [
       { name: "Lionel Mikowsky", table: "Colle dell'Arietta - Valle Soana", message: "Bienvenu le marié, profite de la soirée, tout va bien se passer !" },
@@ -27,26 +30,27 @@
       { name: "Chris Palermo", table: "Dragons de Komodo - Indonesia", message: "Yes, Uncle Chris est au top ce soir!" },
       { name: "Catherine Gambotto", table: "Piton des neiges - La Réunion", message: "Super Catherine, profitons de ce moment" },
       { name: "Domenico Palermo", table: "Machu Picchu", message: "Andiamo a ballare !" },
+      { name: "Anna Dupont", table: "Halong Bay - Vietnam", message: null }, // invité avec message par défaut
+      { name: "Marco Rossi", table: "Mitad del mundo - Ecuador", message: null } // invité avec message par défaut
     ];
 
-    // Associer une image à chaque table (définir à l'avance)
+    // Associer une image à chaque table
     const tableImages = {
-  "Requins baleine à Nabire": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",  // Image de la table "Requins baleine à Nabire"
-  "Machu Picchu": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/MachuPicchu.jpeg",  // Image de la table "Machu Picchu"
-  "Isle of Sye - Scotland": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Scotland.jpeg",  // Image de la table "Isle of Sye - Scotland"
-  "Piton des neiges - La Réunion": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Reunion.jpeg",  // Image de la table "Piton des neiges - La Réunion"
-  "Dragons de Komodo - Indonesia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Komodo.jpeg",  // Image de la table "Dragons de Komodo - Indonesia"
-  "Backside Montfort - Verbier": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Montfort.jpeg",  // Image de la table "Backside Montfort - Verbier"
-  "Heliski Chateau des dames - Cervinia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Heliski.jpeg",  // Image de la table "Heliski Chateau des dames - Cervinia"
-   // Nouvelles entrées
-  "Halong Bay - Vietnam": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Halongbay.jpeg",  // Image de la table "Halong Bay - Vietnam"
-  "Hammerhead sharks - Galapagos": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Galapagos.jpeg",  // Image de la table "Hammerhead sharks - Galapagos"
-  "Mitad del mundo - Ecuador": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Mitaddelmundo.jpeg",  // Image de la table "Mitad del mundo - Ecuador"
-  "Stay overnight - Mont Saint-Michel": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Saintmichel.jpeg",  // Image de la table "Stay overnight - Mont Saint-Michel"
-  "3 of Us - Mauritius": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Maurice.jpeg",  // Image de la table "3 of Us - Mauritius"
-  "Colle dell'Arietta - Valle Soana": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Arietta.jpeg",  // Image de la table "Colle dell'Arietta - Valle Soana"
-  "Niseko Powder - Japan": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Niseko.jpeg",  // Image de la table "Niseko Powder - Japan"
-  "La demande - Santorini": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Santorini.jpeg",  // Image de la table "La demande - Santorini"
+      "Requins baleine à Nabire": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",
+      "Machu Picchu": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/MachuPicchu.jpeg",
+      "Isle of Sye - Scotland": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Scotland.jpeg",
+      "Piton des neiges - La Réunion": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Reunion.jpeg",
+      "Dragons de Komodo - Indonesia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Komodo.jpeg",
+      "Backside Montfort - Verbier": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Montfort.jpeg",
+      "Heliski Chateau des dames - Cervinia": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Heliski.jpeg",
+      "Halong Bay - Vietnam": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Halongbay.jpeg",
+      "Hammerhead sharks - Galapagos": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Galapagos.jpeg",
+      "Mitad del mundo - Ecuador": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Mitaddelmundo.jpeg",
+      "Stay overnight - Mont Saint-Michel": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Saintmichel.jpeg",
+      "3 of Us - Mauritius": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Maurice.jpeg",
+      "Colle dell'Arietta - Valle Soana": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Arietta.jpeg",
+      "Niseko Powder - Japan": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Niseko.jpeg",
+      "La demande - Santorini": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Santorini.jpeg"
     };
 
     // Remplissage du datalist
@@ -64,10 +68,9 @@
 
       const result = document.getElementById("result");
       if (guest) {
-        // Afficher la table et le message
-        let resultHtml = `${guest.message}<br><strong>Ta table/il tuo tavolo :</strong> ${guest.table}`;
+        const message = guest.message || defaultMessage;
+        let resultHtml = `${message}<br><strong>Ta table/il tuo tavolo :</strong> ${guest.table}`;
 
-        // Afficher l'image de la table associée
         const tableImage = tableImages[guest.table];
         if (tableImage) {
           resultHtml += `<br><img src="${tableImage}" alt="Image de la table ${guest.table}">`;
