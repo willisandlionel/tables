@@ -12,7 +12,7 @@
 </head>
 <body>
   <h1>Bienvenue/Benvenuta, Benvenuto/ Welcome au mariage de Willis & Lionel</h1>
-  <h2>Pour connaître ta table, per conoscere tuo tavolo</h2>
+  <h2>Pour connaître ta table, per conoscere il tuo tavolo</h2>
   <p>Entre ton nom/Scrivi il tuo nome :</p>
   <input type="text" id="nameInput" list="names" placeholder="Commencez à taper...">
   <datalist id="names"></datalist>
@@ -56,7 +56,7 @@
       const result = document.getElementById("result");
       if (guest) {
         // Afficher la table et le message
-        let resultHtml = `${guest.message}<br><strong>Ta table/tuo tavolo :</strong> ${guest.table}`;
+        let resultHtml = `${guest.message}<br><strong>Ta table/il tuo tavolo :</strong> ${guest.table}`;
 
         // Afficher l'image de la table associée
         const tableImage = tableImages[guest.table];
