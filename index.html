@@ -4,10 +4,57 @@
   <meta charset="UTF-8">
   <title>Placement des invités</title>
   <style>
-    body { font-family: Arial; text-align: center; padding: 2em; }
+    body { font-family: Arial; text-align: center; padding: 2em; background: #fafafd; }
     input { width: 300px; padding: 10px; font-size: 16px; }
-    .result { margin-top: 20px; font-size: 18px; }
-    img { margin-top: 20px; width: 150px; height: 150px; }
+    .result {
+      margin: 30px auto 0 auto;
+      font-size: 18px;
+      max-width: 450px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.09), 0 1.5px 7px rgba(0,0,0,0.06);
+      padding: 30px 20px 25px 20px;
+      transition: max-width 0.25s, font-size 0.25s;
+      text-align: center;
+      position: relative;
+    }
+    .result .main-image {
+      display: block;
+      margin: 0 auto 18px auto;
+      width: 140px;
+      max-width: 60vw;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      background: #f9f9fa;
+      object-fit: contain;
+      transition: width 0.2s;
+    }
+    .result .table-image {
+      display: block;
+      margin: 22px auto 0 auto;
+      width: 120px;
+      max-width: 50vw;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 1.5px 6px rgba(0,0,0,0.09);
+      object-fit: cover;
+      background: #f4f4f7;
+      transition: width 0.2s;
+    }
+    @media (max-width: 600px) {
+      .result {
+        max-width: 97vw;
+        font-size: 16px;
+        padding: 15px 4vw 15px 4vw;
+      }
+      .result .main-image {
+        width: 90px;
+      }
+      .result .table-image {
+        width: 75px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -22,7 +69,7 @@
     // Message par défaut
     const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
 
-    // Liste des invités avec table, message, et image de la table
+  // Liste des invités avec table, message, et image de la table
     const guests = [
   { name: "Lionel Mikowsky", table: "La Demande - Santorini", message: "Allez le marié, on se destresse on profite de la soirée maintenant !" },
   { name: "Willis Palermo", table: "La Demande - Santorini", message: "My Lovfe, la mariée! On peut savourer la soirée et s'amuser !" },
@@ -163,6 +210,7 @@
   { name: "Dario Moccia", table: "Stay overnight - Mont Saint-Michel", message: "Benvenuto e piacere di conoscerti Dario !" },
 ];
 
+
     // Associer une image à chaque table
     const tableImages = {
       "Whale sharks - Nabire": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",
@@ -182,6 +230,9 @@
       "La Demande - Santorini": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Santorini.jpeg"
     };
 
+    // Image "wl 6 luglio" (à remplacer par ton vrai chemin si besoin)
+    const specialImageUrl = "https://raw.githubusercontent.com/willisandlionel/tables/main/images/wl6luglio.png";
+
     // Remplissage du datalist
     const nameList = document.getElementById("names");
     guests.forEach(guest => {
@@ -198,11 +249,17 @@
       const result = document.getElementById("result");
       if (guest) {
         const message = guest.message || defaultMessage;
-        let resultHtml = `${message}<br><br><strong>Ta table/il tuo tavolo :</strong> ${guest.table}`;
+        let resultHtml = `
+          <img class="main-image" src="${specialImageUrl}" alt="Logo Willis & Lionel 6 luglio">
+          <div style="margin-bottom:18px;">${message}</div>
+          <div>
+            <strong>Ta table/il tuo tavolo :</strong> ${guest.table}
+          </div>
+        `;
 
         const tableImage = tableImages[guest.table];
         if (tableImage) {
-          resultHtml += `<br><img src="${tableImage}" alt="Image de la table ${guest.table}">`;
+          resultHtml += `<img class="table-image" src="${tableImage}" alt="Image de la table ${guest.table}">`;
         }
 
         result.innerHTML = resultHtml;
