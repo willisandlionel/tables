@@ -266,7 +266,7 @@ input {
       const result = document.getElementById("result");
       if (guest) {
         const message = guest.message || defaultMessage;
-        let resultHtml = `${message}<br><br><strong>Ta table/il tuo tavolo :</strong> ${guest.table}`;
+        let resultHtml = `${message}<br><br><strong>Ta table est/il tuo tavolo e :</strong> ${guest.table}`;
 
         const tableImage = tableImages[guest.table];
         if (tableImage) {
