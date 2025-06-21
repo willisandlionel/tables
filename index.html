@@ -4,61 +4,77 @@
   <meta charset="UTF-8">
   <title>Placement des invités</title>
    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-  font-family: 'Quicksand', sans-serif;
-  text-align: center;
-  padding: 2em;
-  background-color: #f9f5f0;
-  color: #3e2f27;
-}
+ <style>
+  body {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    padding: 2em;
+    background-color: #f9f5f0;
+    color: #3e2f27;
+  }
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  color: #2e1f17;
-}
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2e1f17;
+  }
 
-input {
-  width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  font-family: 'Quicksand', sans-serif;
-}
+  input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+  }
 
-    img { margin-top: 20px; width: 150px; height: 150px; }
-    .logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
-}
+  img {
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+  }
 
-.logo-image {
-  max-width: 250px;
-  height: auto;
-  opacity: 0.95;
-  transition: transform 0.3s ease;
-}
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
 
-.logo-image:hover {
-  transform: scale(1.05);
-}
-    .result {
-  margin-top: 20px;
-  font-size: 18px;
-  font-family: 'Quicksand', sans-serif;
-  padding: 1em;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  word-wrap: break-word;
-  color: #3e2f27;
-}
-  </style>
- 
+  .logo-image {
+    max-width: 250px;
+    height: auto;
+    opacity: 0.95;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-image:hover {
+    transform: scale(1.05);
+  }
+
+  .result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+    padding: 1em;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+    color: #3e2f27;
+  }
+
+  .result * {
+    color: inherit;
+  }
+
+  .result img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 1em;
+    border-radius: 6px;
+  }
+</style>
 
 </head>
 <body>
