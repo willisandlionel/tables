@@ -15,7 +15,7 @@
 
   h1, h2 {
     font-family: 'Playfair Display', serif;
-    color: #red;
+    color: #2e1f17;
   }
 
   input {
@@ -269,8 +269,13 @@
       const result = document.getElementById("result");
       if (guest) {
         const message = guest.message || defaultMessage;
-        let resultHtml = `${message}<br><br><strong>Ta table est/il tuo tavolo e :</strong> ${guest.table}`;
-
+        let resultHtml = `
+      <span style="color: inherit;">
+        ${message}<br><br>
+        <strong style="color: inherit;">Ta table est/il tuo tavolo e :</strong> 
+        ${guest.table}
+      </span>`;
+        
         const tableImage = tableImages[guest.table];
         if (tableImage) {
           resultHtml += `<br><img src="${tableImage}" alt="Image de la table ${guest.table}">`;
