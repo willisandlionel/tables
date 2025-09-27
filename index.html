@@ -102,7 +102,7 @@ function normalize(str) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-fetch('guests.json')
+fetch('tables/guests.json')
   .then(response => response.json())
   .then(data => {
     guests = data;
