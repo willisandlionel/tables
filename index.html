@@ -131,13 +131,6 @@ function fillDatalist() {
       "La Demande - Santorini": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Santorini.jpeg"
     };
 
-    // Remplissage du datalist
-    const nameList = document.getElementById("names");
-    guests.forEach(guest => {
-      const option = document.createElement("option");
-      option.value = guest.name;
-      nameList.appendChild(option);
-    });
 
     // Affichage des infos quand le nom est entré
     document.getElementById("nameInput").addEventListener("change", function() {
