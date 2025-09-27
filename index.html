@@ -90,7 +90,7 @@ body {
   <div class="result" id="result"></div>
 
   <script>
-/* Remplacez le <script> actuel par tout ce bloc */
+
 const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
 let guests = [];
 
@@ -107,7 +107,7 @@ function normalize(str){
 }
 
 /* Charge le JSON + debug */
-fetch('tables/guests.json')
+fetch('/tables/guests.json')
   .then(response => {
     if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
     return response.json();
