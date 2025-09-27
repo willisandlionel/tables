@@ -1,5 +1,5 @@
 [
-{ name: "Lionel Mikowsky", table: "La Demande - Santorini", message: "Allez le marié, on se destresse on profite de la soirée maintenant !" },
+{ "name": "Lionel Mikowsky", "table": "La Demande - Santorini", "message": "Allez le marié, on se destresse on profite de la soirée maintenant !" },
   { name: "Willis Palermo", table: "La Demande - Santorini", message: "My Lovfe, la mariée! On peut savourer la soirée et s'amuser !" },
   { name: "Sylvie Kouhana", table: "Niseko Powder - Japan", message: "Merci Sylvie d'être parmi nous, place à la fête !" },
   { name: "Sauveur Partouche", table: "Niseko Powder - Japan", message: "Super Sauveur, merci d'avoir laissé ton club de vin pour être parmi nous. On compte sur toi pour faire la fête ce soir!" },
