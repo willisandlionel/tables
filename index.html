@@ -90,52 +90,28 @@ body {
   <datalist id="names"></datalist>
   <div class="result" id="result"></div>
 
-<script>
-const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
-let guests = [];
+  <script>
+    // Message par défaut
+    const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
 
-// Fonction pour normaliser (minuscule + sans accent)
-function normalize(str) {
-  return str
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-}
+    // Liste des invités avec table, message, et image de la table via Json
+     let guests = [];
 
 fetch('tables/guests.json')
   .then(response => response.json())
   .then(data => {
     guests = data;
-    // Remplir le datalist avec les noms des invités
-    const namesList = document.getElementById('names');
-    guests.forEach(guest => {
-      const option = document.createElement('option');
-      option.value = guest.name;
-      namesList.appendChild(option);
-    });
+    fillDatalist();
   });
 
-document.getElementById('nameInput').addEventListener('input', function(e) {
-  const name = normalize(e.target.value.trim());
-
-  const guest = guests.find(g =>
-    normalize(g.name).includes(name) && name.length > 0
-  );
-
-  const resultDiv = document.getElementById('result');
-  if (guest) {
-    resultDiv.innerHTML = `<b>${guest.name}</b><br>
-      <b>Table:</b> ${guest.table}<br>
-      <b>Message:</b> ${guest.message}`;
-  } else if (name.length > 0) {
-    resultDiv.textContent = "Aucun invité reconnu avec ce nom. Vérifiez l’orthographe ou essayez juste le prénom ou le nom.";
-  } else {
-    resultDiv.textContent = "";
-  }
-});
-
-  
-  
+function fillDatalist() {
+  const nameList = document.getElementById("names");
+  guests.forEach(guest => {
+    const option = document.createElement("option");
+    option.value = guest.name;
+    nameList.appendChild(option);
+  });
+}
 // The rest of your search/display code stays the same
     // Associer une image à chaque table
     const tableImages = {
