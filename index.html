@@ -187,12 +187,12 @@ function searchAndDisplay(input) {
   if (matches.length === 1) { showGuest(matches[0]); return; }
   // startsWith
   matches = guests.filter(g => normalize(g.name).startsWith(n));
-  if (matches.length === 1) { showGuest(matches[0]); return; }
-  if (matches.length > 1) { showMultiple(matches); return; }
+//  if (matches.length === 1) { showGuest(matches[0]); return; }
+  if (matches.length >= 1) { showMultiple(matches); return; }
   // includes
   matches = guests.filter(g => normalize(g.name).includes(n));
-  if (matches.length === 1) { showGuest(matches[0]); return; }
-  if (matches.length > 1) { showMultiple(matches); return; }
+//  if (matches.length === 1) { showGuest(matches[0]); return; }
+  if (matches.length >= 1) { showMultiple(matches); return; }
   showNoMatch(input);
 }
 
