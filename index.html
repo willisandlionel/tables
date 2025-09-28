@@ -117,14 +117,8 @@ body {
 
 
    
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <script>
-const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
-const inputEl = document.getElementById('nameInput');
-const resultEl = document.getElementById('result');
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
-
 let guests = [];
 
 function searchAndDisplay(input) {
@@ -135,7 +129,7 @@ function searchAndDisplay(input) {
 
   const n = normalize(input);
 
-  fetch(`https://script.google.com/macros/s/AKfycbwk3yZa1LnUd2cDr8Yfm2veS0XBARRUdfC-W6gGd_Ti5ncAnDdSlI156rd0m9uM69cs_w/exec?name=${encodeURIComponent(input)}`)
+  fetch(`https://script.google.com/macros/s/1nmkFce_mIDRz-7ONuG3mo1z8-T-vnOECAa8q-SEmqxA/exec?name=${encodeURIComponent(input)}`)
     .then(response => response.json())
     .then(data => {
       if (!Array.isArray(data) || data.length === 0) {
