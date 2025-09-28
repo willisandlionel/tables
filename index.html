@@ -170,7 +170,7 @@ function showNoMatch(input) {
 /* Plusieurs correspondances (boutons cliquables) */
 function showMultiple(matches) {
   const items = matches.slice(0, 8).map(m =>
-    `<button type="button" class="match-btn" data-name="${m.name}" style="margin:5px;padding:6px 10px;cursor:pointer;">${m.name} — ${m.table}</button>`
+    `<button type="button" class="match-btn" data-name="${m.name}" style="margin:5px;padding:6px 10px;cursor:pointer;">${m.name}</button>`
   ).join('');
   resultEl.innerHTML = `<div>Plusieurs correspondances :<br>${items}</div>`;
 }
