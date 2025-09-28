@@ -137,15 +137,6 @@ function normalize(str){
     if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
     return response.json();
   })
-  .then(data => {
-    guests = data;
-    fillDatalist();
-    console.log('guests loaded:', guests.length, guests.slice(0,6));
-  })
-  .catch(err => {
-    console.error('Erreur fetch guests.json →', err);
-    resultEl.textContent = 'Erreur chargement guests.json : ' + err.message;
-  });
   */
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
 Papa.parse(SHEET_CSV_URL, {
@@ -156,6 +147,18 @@ Papa.parse(SHEET_CSV_URL, {
     fillDatalist();
   }
 });
+    
+  .then(data => {
+    guests = data;
+    fillDatalist();
+    console.log('guests loaded:', guests.length, guests.slice(0,6));
+  })
+  .catch(err => {
+    console.error('Erreur fetch guests.json →', err);
+    resultEl.textContent = 'Erreur chargement guests.json : ' + err.message;
+  });
+  
+
 
 function fillDatalist() {
   const dl = document.getElementById('names');
