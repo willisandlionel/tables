@@ -132,22 +132,48 @@ function normalize(str){
 }
 
 /* Charge le JSON + debug */
-fetch('/tables/guests.json')
-  .then(response => {
-    if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
-    return response.json();
-  })
-  
-/*const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
+//fetch('/tables/guests.json')
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script>
+const SHEET_CSV_URL = "<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script>
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/ID_DU_DOCUMENT/pub?output=csv";
+let guests = [];
+
 Papa.parse(SHEET_CSV_URL, {
   download: true,
-  header: true,
+  header: true,         // utilise la première ligne comme noms de colonnes
+  skipEmptyLines: true,
   complete: function(results) {
     guests = results.data;
-    fillDatalist();
+    fillDatalist();     // ta fonction existante
+    console.log('guests loaded:', guests.length);
+  },
+  error: function(err) {
+    console.error('Erreur Google Sheet →', err);
+    resultEl.textContent = 'Impossible de charger la liste : ' + err.message;
   }
 });
-*/    
+
+let guests = [];
+
+Papa.parse(SHEET_CSV_URL, {
+  download: true,
+  header: true,         // utilise la première ligne comme noms de colonnes
+  skipEmptyLines: true,
+  complete: function(results) {
+    guests = results.data;
+    fillDatalist();     // ta fonction existante
+    console.log('guests loaded:', guests.length);
+  },
+  error: function(err) {
+    console.error('Erreur Google Sheet →', err);
+    resultEl.textContent = 'Impossible de charger la liste : ' + err.message;
+  }
+});
+
+  
   .then(data => {
     guests = data;
     fillDatalist();
