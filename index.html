@@ -197,8 +197,8 @@ function searchAndDisplay(input) {
 }
 
 /* Evenements : recherche live pendant la saisie + change */
-inputEl.addEventListener('input', e => searchAndDisplay(e.target.value));
-//inputEl.addEventListener('change', e => searchAndDisplay(e.target.value));
+//inputEl.addEventListener('input', e => searchAndDisplay(e.target.value));
+inputEl.addEventListener('change', e => searchAndDisplay(e.target.value));
 
 /* Clique sur une suggestion */
 resultEl.addEventListener('click', e => {
