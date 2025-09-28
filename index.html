@@ -132,13 +132,13 @@ function normalize(str){
 }
 
 /* Charge le JSON + debug */
-/*fetch('/tables/guests.json')
+fetch('/tables/guests.json')
   .then(response => {
     if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
     return response.json();
   })
-  */
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
+  
+/*const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
 Papa.parse(SHEET_CSV_URL, {
   download: true,
   header: true,
@@ -147,7 +147,7 @@ Papa.parse(SHEET_CSV_URL, {
     fillDatalist();
   }
 });
-    
+*/    
   .then(data => {
     guests = data;
     fillDatalist();
@@ -170,7 +170,7 @@ function fillDatalist() {
   });
 }
 
-/* Mapping images (garder / adapter si besoin) */
+/* Mapping images  */
 const tableImages = {
   "Whale sharks - Nabire": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/Requinsbaleine.jpeg",
   "Machu Picchu - Perú": "https://raw.githubusercontent.com/willisandlionel/tables/main/images/MachuPicchu.jpeg",
