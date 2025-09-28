@@ -114,49 +114,43 @@ body {
   <datalist id="names"></datalist>
   <div class="result" id="result"></div>
 
-  <script>
+/* Charge le JSON + debug */
+//fetch('/tables/guests.json')
 
+   
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
 const defaultMessage = "Nous sommes ravis que tu sois parmi nous, place à la fête!";
-let guests = [];
-
 const inputEl = document.getElementById('nameInput');
 const resultEl = document.getElementById('result');
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
+
+let guests = [];
+
+Papa.parse(SHEET_CSV_URL, {
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  complete: function(results) {
+    guests = results.data;
+    fillDatalist();
+    console.log('Guests chargés :', guests.length, guests.slice(0, 3)); // debug
+  },
+  error: function(err) {
+    console.error('Erreur de chargement Google Sheet →', err);
+    resultEl.textContent = 'Erreur de chargement de la liste : ' + err.message;
+  }
+});
 
 function normalize(str){
   return String(str || '')
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // retire accents
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
 }
-
-/* Charge le JSON + debug */
-//fetch('/tables/guests.json')
-
-    
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script>
-const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
-let guests = [];
-
-Papa.parse(SHEET_CSV_URL, {
-  download: true,
-  header: true,
-  skipEmptyLines: true,
-  complete: function(results) {
-    guests = results.data;
-    fillDatalist();
-    console.log('Guests loaded:', guests.length, guests.slice(0, 5));
-  },
-  error: function(err) {
-    console.error('Erreur de chargement Google Sheet →', err);
-    document.getElementById('result').textContent = 'Erreur chargement liste : ' + err.message;
-  }
-});
-</script>
-
-
 
 function fillDatalist() {
   const dl = document.getElementById('names');
@@ -167,6 +161,9 @@ function fillDatalist() {
     dl.appendChild(opt);
   });
 }
+
+ 
+
 
 /* Mapping images  */
 const tableImages = {
