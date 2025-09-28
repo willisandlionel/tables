@@ -132,7 +132,7 @@ function normalize(str){
 }
 
 /* Charge le JSON + debug */
-fetch('/tables/guests.json')
+/*fetch('/tables/guests.json')
   .then(response => {
     if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
     return response.json();
@@ -146,6 +146,7 @@ fetch('/tables/guests.json')
     console.error('Erreur fetch guests.json →', err);
     resultEl.textContent = 'Erreur chargement guests.json : ' + err.message;
   });
+  */
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gENzf6fKuHR-CcMhyVB4O11vYoZWjUlMiXuv-8qwiVB77Q3cKioaEUmkXxW8-lKNncA2ZC5dI/pub?output=csv";
 Papa.parse(SHEET_CSV_URL, {
   download: true,
