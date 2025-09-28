@@ -205,7 +205,9 @@ resultEl.addEventListener('click', e => {
   const name = e.target.dataset && e.target.dataset.name;
   if (name) {
     inputEl.value = name;
-    searchAndDisplay(name);
+    //searchAndDisplay(name);
+    const guest = guests.find(g => normalize(g.name) === normalize(name));
+    if (guest) showGuest(guest);
   }
 });
 </script>
