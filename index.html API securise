@@ -127,21 +127,35 @@ const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTiQl_gEN
 
 let guests = [];
 
-Papa.parse(SHEET_CSV_URL, {
-  download: true,
-  header: true,
-  skipEmptyLines: true,
-  complete: function(results) {
-    guests = results.data;
-    fillDatalist();
-    console.log('Guests chargés :', guests.length, guests.slice(0, 3)); // debug
-  },
-  error: function(err) {
-    console.error('Erreur de chargement Google Sheet →', err);
-    resultEl.textContent = 'Erreur de chargement de la liste : ' + err.message;
+function searchAndDisplay(input) {
+  if (!input || input.trim() === '') {
+    resultEl.textContent = '';
+    return;
   }
-});
 
+  const n = normalize(input);
+
+  fetch(`https://script.google.com/macros/s/AKfycbwk3yZa1LnUd2cDr8Yfm2veS0XBARRUdfC-W6gGd_Ti5ncAnDdSlI156rd0m9uM69cs_w/exec?name=${encodeURIComponent(input)}`)
+    .then(response => response.json())
+    .then(data => {
+      if (!Array.isArray(data) || data.length === 0) {
+        showNoMatch(input);
+      } else {
+        showGuest(data[0]);
+      }
+    })
+    .catch(err => {
+      console.error('Erreur API :', err);
+      resultEl.textContent = 'Erreur de connexion à la base de données.';
+    });
+}
+
+
+
+
+
+
+  
 function normalize(str){
   return String(str || '')
     .toLowerCase()
