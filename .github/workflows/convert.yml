@@ -3,7 +3,7 @@ name: Convert CSV to JSON
 on:
   push:
     branches:
-      - main
+      - main  # ou master selon ton repo
 
 permissions:
   contents: write
@@ -18,9 +18,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Installer dépendances
-        run: npm install csv-parse
 
       - name: Convert CSV to JSON
         run: node convert.js
