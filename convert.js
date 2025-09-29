@@ -1,11 +1,16 @@
 const fs = require("fs");
-const Papa = require("papaparse");
+const parse = require("csv-parse/lib/sync");
 
+// Lire le CSV
 const csv = fs.readFileSync("guests.csv", "utf8");
-const result = Papa.parse(csv, {
-  header: true,
-  skipEmptyLines: true
+
+// Parser correctement le CSV
+const records = parse(csv, {
+  columns: true,    // prend la première ligne comme en-têtes
+  skip_empty_lines: true
 });
 
-fs.writeFileSync("guests.json", JSON.stringify(result.data, null, 2), "utf8");
+// Sauver en JSON
+fs.writeFileSync("guests.json", JSON.stringify(records, null, 2), "utf8");
+
 console.log("✅ Conversion terminée : guests.json généré");
