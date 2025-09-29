@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+const fs = require("fs");
+const path = require("path");
 
 // Lecture du CSV
 const csvFile = path.resolve("guests.csv");
@@ -19,7 +19,7 @@ const data = lines.slice(1).map(line => {
   return obj;
 });
 
-// Sauvegarde en JSON (UTF-8 avec accents préservés)
+// Sauvegarde en JSON
 fs.writeFileSync("guests.json", JSON.stringify(data, null, 2), { encoding: "utf8" });
 
 console.log("✅ Conversion terminée : guests.json généré");
