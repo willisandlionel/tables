@@ -132,7 +132,7 @@ function normalize(str){
 }
 
 /* Charge le JSON + debug */
-fetch('/tables/guests.json')
+fetch('/tables/invites.json')
   .then(response => {
     if (!response.ok) throw new Error(`HTTP ${response.status} ${response.statusText}`);
     return response.json();
@@ -143,8 +143,8 @@ fetch('/tables/guests.json')
     console.log('guests loaded:', guests.length, guests.slice(0,6));
   })
   .catch(err => {
-    console.error('Erreur fetch guests.json →', err);
-    resultEl.textContent = 'Erreur chargement guests.json : ' + err.message;
+    console.error('Erreur fetch invites.json →', err);
+    resultEl.textContent = 'Erreur chargement invites.json : ' + err.message;
   });
 
 function fillDatalist() {
