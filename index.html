@@ -146,7 +146,7 @@ function searchAndDisplay(input) {
     return;
   }
 
-  fetch(`https://script.google.com/macros/s/1nmkFce_mIDRz-7ONuG3mo1z8-T-vnOECAa8q-SEmqxA/exec?name=${encodeURIComponent(input)}`)
+  fetch(`https://script.google.com/macros/s/1sh05x0C-R3Hv7PfbrzKZ3WQGrHsrFeUuWLrFlaK-XHI/exec?name=${encodeURIComponent(input)}`)
     .then(response => response.json())
     .then(data => {
       if (!Array.isArray(data) || data.length === 0) {
